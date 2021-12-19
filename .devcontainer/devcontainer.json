@@ -1,0 +1,46 @@
+{
+    "build": {
+        "dockerfile": "cuda/Dockerfile",
+        "context": "cuda",
+        "args": {
+            "ROS_DISTRO": "galactic"
+        }
+    },
+    "remoteUser": "developer",
+    "updateRemoteUserUID": true,
+    "runArgs": [
+        "--net",
+        "host",
+        "--gpus",
+        "all",
+        "-e",
+        "DISPLAY=${env:DISPLAY}",
+        "-v",
+        "/tmp/.X11-unix:/tmp/.X11-unix",
+        "-v",
+        "${env:HOME}/.ssh:/home/developer/.ssh:ro",
+        "-v",
+        "${env:HOME}/.gitconfig:/home/developer/.gitconfig:ro",
+        "-v",
+        "${localWorkspaceFolder}/.devcontainer/home/history:/home/developer/.bash_history:rw",
+    ],
+    "initializeCommand": "touch .devcontainer/home/history",
+    "extensions": [
+        "wraith13.background-phi-colors",
+        "wraith13.bracket-lens",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "yzhang.markdown-all-in-one",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+        "webfreak.dlang-bundle",
+        "editorconfig.editorconfig",
+        "ms-vscode.test-adapter-converter",
+        "hbenl.vscode-test-explorer",
+        "rti.omg-idl",
+        "nonanonno.vscode-ros2",
+        "pentaphobe.go-pigeon"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder}/ros2_d,target=/workspaces/ros2_d,type=bind,consistency=cached",
+    "workspaceFolder": "/workspaces/ros2_d"
+}
