@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/
 
 # install dmd
-ARG dmd_version="2.098.0"
+ARG dmd_version="2.098.1"
 RUN apt-get update && apt-get install -y wget \
     && wget http://downloads.dlang.org/releases/2.x/${dmd_version}/dmd_${dmd_version}-0_amd64.deb -O dmd.deb \
     && dpkg -i dmd.deb || true \
